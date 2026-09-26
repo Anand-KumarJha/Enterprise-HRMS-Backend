@@ -26,6 +26,9 @@ public class Employee {
     private String phone;
     @ManyToOne
     private Designation designation;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
     @Enumerated(EnumType.STRING)
     private Bands performanceBand;
     @Positive

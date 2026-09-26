@@ -6,6 +6,7 @@ import com.anand.hrms.enterprise_hrms.entity.Employee;
 import com.anand.hrms.enterprise_hrms.service.EmployeeService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +30,10 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EmployeeResponse>> findAllEmployees(){
+    public ResponseEntity<Page<EmployeeResponse>> findAllEmployees(@RequestParam int pageNumber, @RequestParam int pageSize){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(service.findAllEmployees());
+                .body(service.findAllEmployees(pageNumber, pageSize));
     }
 
     @GetMapping("/{id}")

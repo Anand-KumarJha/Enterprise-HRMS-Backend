@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Arrays;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -18,6 +20,7 @@ public class GlobalExceptionHandler {
                         500,
                         ex.getMessage()
                 );
+        ex.printStackTrace();
         return new ResponseEntity<>(
                 error,
                 HttpStatus.INTERNAL_SERVER_ERROR
